@@ -1,0 +1,61 @@
+Attack on KIOSEK
+(Age of War)
+
+Hráč proti PC
+Kiosek vs Evil kiosek?
+
+
+Kiosek
+500hp pro kiosek
+1000hp pro evil kiosek
+
+1koruna/s
+
+
+Kiosek
+Melee - Michal Dvořák - Jaselská cedule - Michal - 10hp - 1dmg - speed 0.7s - za 5 korun
+Long range - Standa Cinkl  - Bude házet činky - Michal - 5hp - 1.5dmg - 2s - za 10 korun
+Tank - Super Unreal Urban jr. - SUU - Michal - 20hp - 2dmg - 3s - za 20 korun
+
+
+Evil Kiosek
+Melee - Esch - mlátí kabelem - Petr - 12hp - 2dmg - speed 0.7s - dostanem 10 korun
+Long range - Charles - Fixy - (Kovaczzsasčová - míče) - Hlaváček - 7hp - 2dmg - speed 1.5s - dostanem 20 korun 
+Tank - Unreal Urban sr. - kolektivní únos - 30hp - 3dmg - 4s - dostanem 50 korun
+
+
+Hra bude začínat v 7:55
+Končit bude v 15:35
+
+Timer nad dveře
+Ability
+1. Padání Teams loga - dmg - 10
+2. Doplneni kiosku - doplni zivoty base 
+3. Otevrou se dvere - flashbang od sluníčka - stun učitelům na 5s
+4. Okna - zacne mrznout a ubere dmg ucitelum a zaroven zpomali
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
