@@ -4,7 +4,8 @@ import { Background } from "./ui/basic-utils.js";
 const background = new Background();
 console.log(background);
 
-const frafta = new Character("Urban", 10000, 1, 0.1, 0);
+const frafta = new Character("Frafta", 10000, 1, 4, 0);
+const unrealurbic = new Character("Urban", 10000, 1, 0.2, 1);
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d")
@@ -73,7 +74,8 @@ const clearCanvas = () => {
 };
 const update = () => {
     frafta.update(0)
-    if (frafta.position.x >= 640){
+    unrealurbic.update(0)
+   /*if (frafta.position.x >= 640){
         frafta.update(1)
         frafta.hp -= 100;
         if (frafta.hp <= 0) {
@@ -83,11 +85,12 @@ const update = () => {
     }
     else {
         frafta.update(0)
-    }
+    }*/
     
 };
 const render = () => {
     frafta.draw(ctx);
+    unrealurbic.draw(ctx);
 };
 const getFps = () => {};
 window.onload = () => {
