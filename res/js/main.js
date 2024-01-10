@@ -4,22 +4,22 @@ import { Background } from "./ui/basic-utils.js";
 const background = new Background();
 console.log(background);
 
-const myCharacter = new Character("Urban", 100, 5, 0.5);
-const myCharacter2 = new Character("Pepa", 100, 5, 1,)
+const frafta = new Character("Urban", 10000, 1, 0.1, 0);
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d")
 
-const person = {
-    name: "Urban",
-    hp: 50,
-    mana: 40,
-}
+
 
 const keys = {}
 //space:true
 // space: false
 document.addEventListener("keydown", (e) => {
     keys[e.code] = true;
+});
+
+document.addEventListener("keyup", (e) => {
+    keys[e.code] = false;
 });
 /* js objekt
 // js objekt - {}
@@ -71,10 +71,25 @@ const resizeCanvas = () => {
 const clearCanvas = () => {
     background.draw(ctx);
 };
-const update = () => {};
-const render = () => {};
+const update = () => {
+    frafta.update(0)
+    if (frafta.position.x >= 640){
+        frafta.update(1)
+        frafta.hp -= 100;
+        if (frafta.hp <= 0) {
+            frafta.update(2)
+            
+        }
+    }
+    else {
+        frafta.update(0)
+    }
+    
+};
+const render = () => {
+    frafta.draw(ctx);
+};
 const getFps = () => {};
-
 window.onload = () => {
 
     window.requestAnimationFrame(gameLoop);
