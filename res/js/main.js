@@ -1,6 +1,12 @@
 import { Character } from "./characters/Characters.js";
 import { Background } from "./ui/basic-utils.js";
 
+//uchovava postavz pro hrace
+const friendly = [];
+//uchovava postavz pro pocitac
+const enemies = [];
+
+
 const background = new Background();
 console.log(background);
 
@@ -89,11 +95,32 @@ const update = () => {
     
 };
 const render = () => {
-    frafta.draw(ctx);
-    unrealurbic.draw(ctx);
+    // a - postava ktera je na rade
+    friendly.map((a) => {
+        a.draw(ctx);
+    })
+    enemies.map((a) => {
+        a.draw(ctx);
+    })
 };
 const getFps = () => {};
-window.onload = () => {
 
+
+const loadData = async () => {
+    const file = await fetch("./res/data/characters.json")
+    const data = await file.json()
+    Character.charactersData = data;
+}
+const preRender = () => {
+    friendly.push(new Character("UnrealUrbic"));
+    enemies.push(new Character("Frafticek"));
+}
+
+window.onload = async () => {
+    //nacteme soubor
+    await loadData();
+    //prerenderujeme postavy
+    preRender();
+    //spustime hru
     window.requestAnimationFrame(gameLoop);
 }

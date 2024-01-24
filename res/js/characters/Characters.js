@@ -1,58 +1,73 @@
 export class Character {
-  constructor(name, hp, dmg, speed, type) {
+  // static - dana vec naleyi/patri tride - ne objektu
+  static charactersData;
+  /*
+   * const foo - new Character(...)
+   * foo.name - name patri objektu
+   *
+   * kdyz dana vec patri tride - je static
+   * Character.characterData - yapis vzpada takto
+   * foo.charactersData - nebude fungovat
+   */
+
+  constructor(name) {
     this.name = name;
-    this.hp = hp;
-    this.dmg = dmg;
-    this.speed = speed;
     this.img = new Image();
-    this.setType(type);
+    this.setType(name);
     this.img.src = this.path;
     this.ratio = 0.35;
     this.size = {
       width: 336 * this.ratio,
       height: 634 * this.ratio,
     };
-    this.position = {
-      x: 100,
-      y: 350,
-    };
-    this.velocity = {
-      x: 1 * this.speed,
-    };
-    this.side = 0;
-
+    this.state = 0;
+    this.animationSpeed = 4;
     /* this.name - vlastnost */
+    this.frame = { 
+      counter: 0, 
+      index: 1,
+      maxIndex: 11,
+      width: 100,
+      height: 100,
+    }
+    
   }
 
-  setType(type) {
-    const charactersType = [
-      "./res/img/characters/fraftik4brady.png",
-      "./res/img/characters/unrealurbic.png",
-    ];
-    this.path = charactersType[type];
+  setType(name) {
+    Character.charactersData.map((obj) => {
+      if (name === obj.name) {
+        this.sprites = obj.sprites;
+        this.hp = obj.stats.hp;
+        this.maxHp = this.hp;
+        this.dmg = obj.stats.dmg;
+        this.speed = obj.stats.speed;
+        this.side = obj.stats.side;
+        this.velocity = {
+          x: obj.stats.velocity * this.speed,
+        };
+        this.position = {
+          x: obj.stats.position,
+          y: 350,
+        };
+        return;
+      }
+    });
+  }
+
+  animate(ctx) {
+    ctx.drawImage()
   }
   draw(ctx) {
     ctx.save();
-    
+
     if (this.side === 0) {
-      ctx.drawImage(
-        this.img,
-        this.position.x,
-        this.position.y,
-        this.size.width,
-        this.size.height,
-      );
+      this.animate(ctx);
+
       return ctx.restore();
     }
-      ctx.translate(this.position.x + this.size.width, 0);
-      ctx.scale(-1, 1);
-      ctx.drawImage(
-        this.img,
-        0,
-        this.position.y,
-        this.size.width,
-        this.size.height,
-      );
+    ctx.translate(this.position.x + this.size.width, 0);
+    ctx.scale(-1, 1);
+    this.animate(ctx);
     ctx.restore();
   }
   update(state) {
