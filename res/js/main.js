@@ -5,14 +5,8 @@ import { Background } from "./ui/basic-utils.js";
 const friendly = [];
 //uchovava postavz pro pocitac
 const enemies = [];
-
-
 const background = new Background();
 console.log(background);
-
-const frafta = new Character("Frafta", 10000, 1, 4, 0);
-const unrealurbic = new Character("Urban", 10000, 1, 0.2, 1);
-
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d")
 
@@ -79,21 +73,17 @@ const clearCanvas = () => {
     background.draw(ctx);
 };
 const update = () => {
-    frafta.update(0)
-    unrealurbic.update(0)
-   /*if (frafta.position.x >= 640){
-        frafta.update(1)
-        frafta.hp -= 100;
-        if (frafta.hp <= 0) {
-            frafta.update(2)
-            
-        }
-    }
-    else {
-        frafta.update(0)
-    }*/
+    detectCollision();
     
 };
+const detectCollision = () => {
+    friendly.map((a) => {
+        enemies.map((b) => {
+            Character.detectCollision(a, b);
+        });
+    });
+    
+}
 const render = () => {
     // a - postava ktera je na rade
     friendly.map((a) => {
